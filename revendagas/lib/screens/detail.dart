@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     dynamic bid = ModalRoute.of(context).settings.arguments;
+
+    ScreenUtil.init(
+        BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width,
+            maxHeight: MediaQuery.of(context).size.height),
+        designSize: Size(1440, 2560),
+        orientation: Orientation.portrait);
+
+    print(ScreenUtil().screenHeight);
+    print(ScreenUtil().screenWidth);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Selecionar Produtos'),
@@ -24,8 +36,8 @@ class DetailPage extends StatelessWidget {
                   children: [
                     Container(
                       margin: EdgeInsets.all(7),
-                      width: 35,
-                      height: 35,
+                      width: ScreenUtil().screenWidth * 0.09,
+                      height: ScreenUtil().screenWidth * 0.09,
                       decoration: BoxDecoration(
                           border: Border.all(
                             width: 7.0,
@@ -40,7 +52,7 @@ class DetailPage extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      width: 70,
+                      width: ScreenUtil().screenWidth * 0.2,
                       height: 1,
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -56,8 +68,8 @@ class DetailPage extends StatelessWidget {
                   children: [
                     Container(
                       margin: EdgeInsets.all(10),
-                      width: 30,
-                      height: 30,
+                      width: ScreenUtil().screenWidth * 0.08,
+                      height: ScreenUtil().screenWidth * 0.08,
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 3.0,
@@ -75,7 +87,7 @@ class DetailPage extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      width: 70,
+                      width: ScreenUtil().screenWidth * 0.2,
                       height: 1,
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -91,8 +103,8 @@ class DetailPage extends StatelessWidget {
                   children: [
                     Container(
                       margin: EdgeInsets.all(10),
-                      width: 30,
-                      height: 30,
+                      width: ScreenUtil().screenWidth * 0.08,
+                      height: ScreenUtil().screenWidth * 0.08,
                       decoration: BoxDecoration(
                         border: Border.all(width: 3.0, color: Colors.grey[300]),
                         borderRadius: BorderRadius.all(
@@ -137,7 +149,9 @@ class DetailPage extends StatelessWidget {
                     children: [
                       Text(
                         '${bid["nome"]} - Botijão de 13Kg',
-                        // textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontSize: ScreenUtil().screenWidth * 0.034,
+                        ),
                       ),
                     ],
                   ),
@@ -153,14 +167,14 @@ class DetailPage extends StatelessWidget {
                           Text(
                             'R\$ ',
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: ScreenUtil().screenWidth * 0.032,
                             ),
                           ),
                           Text(
                             '${bid["preco"].toStringAsFixed(2)}',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                              fontSize: ScreenUtil().screenWidth * 0.05,
                             ),
                           ),
                         ],
@@ -187,7 +201,7 @@ class DetailPage extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.home,
-                          size: 50,
+                          size: ScreenUtil().screenWidth * 0.12,
                           color: Colors.grey,
                         ),
                       ],
@@ -203,7 +217,7 @@ class DetailPage extends StatelessWidget {
                                   '${bid["nome"]}             ',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                                    fontSize: ScreenUtil().screenWidth * 0.038,
                                   ),
                                 ),
                               ],
@@ -213,10 +227,7 @@ class DetailPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(3.0),
                               child: Container(
-                                // color: Colors.red,
-                                // padding: EdgeInsets.only(right: 30),
                                 child: Row(
-                                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.only(right: 30),
@@ -228,7 +239,9 @@ class DetailPage extends StatelessWidget {
                                                 '${bid['nota']}',
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 16,
+                                                  fontSize:
+                                                      ScreenUtil().screenWidth *
+                                                          0.035,
                                                 ),
                                               ),
                                               Icon(
@@ -251,13 +264,17 @@ class DetailPage extends StatelessWidget {
                                               '${bid['tempoMedio']}',
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 16,
+                                                fontSize:
+                                                    ScreenUtil().screenWidth *
+                                                        0.035,
                                               ),
                                             ),
                                             Text(
                                               'min',
                                               style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize:
+                                                    ScreenUtil().screenWidth *
+                                                        0.026,
                                                 color: Colors.grey,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -283,7 +300,7 @@ class DetailPage extends StatelessWidget {
                             child: Text(
                               '${bid["tipo"]}',
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: ScreenUtil().screenWidth * 0.045,
                                 backgroundColor: Colors.black,
                                 color: Colors.white,
                               ),
@@ -315,13 +332,15 @@ class DetailPage extends StatelessWidget {
                           children: [
                             Text(
                               "R\$ ",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                fontSize: ScreenUtil().screenWidth * 0.030,
+                              ),
                             ),
                             Text(
                               '${bid["preco"].toStringAsFixed(2)}',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 18,
+                                fontSize: ScreenUtil().screenWidth * 0.045,
                               ),
                             ),
                           ],
@@ -345,7 +364,7 @@ class DetailPage extends StatelessWidget {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 50,
+                                    fontSize: ScreenUtil().screenWidth * 0.1,
                                   ),
                                 ),
                               ],
@@ -354,8 +373,8 @@ class DetailPage extends StatelessWidget {
                               alignment: const Alignment(0, 0.22),
                               children: [
                                 Container(
-                                  width: 80,
-                                  height: 80,
+                                  width: ScreenUtil().screenWidth * 0.2,
+                                  height: ScreenUtil().screenHeight * 0.13,
                                   child:
                                       Image.asset('assets/image/icongas.png'),
                                 ),
@@ -369,7 +388,8 @@ class DetailPage extends StatelessWidget {
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 20,
+                                      fontSize:
+                                          ScreenUtil().screenWidth * 0.055,
                                     ),
                                   ),
                                 ),
@@ -387,7 +407,7 @@ class DetailPage extends StatelessWidget {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 27,
+                                    fontSize: ScreenUtil().screenWidth * 0.06,
                                   ),
                                 ),
                               ],
@@ -406,8 +426,8 @@ class DetailPage extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.all(10),
-            width: 200,
-            height: 60,
+            width: ScreenUtil().screenWidth * 0.5,
+            height: ScreenUtil().screenHeight * 0.09,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(35),

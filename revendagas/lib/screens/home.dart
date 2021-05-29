@@ -18,6 +18,8 @@ class _HomePageState extends State<HomePage> {
         designSize: Size(1440, 2560),
         orientation: Orientation.portrait);
 
+    
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Escolha uma Revenda'),
